@@ -1,0 +1,6 @@
+<resources>
+    <string-array name="alerts_array">
+            <item>Holy Drink</item>
+            <item>Dumb Drink</item>
+        </string-array>
+</resources>
