@@ -63,15 +63,15 @@
             android:paddingLeft="100dip"
             >
         <Button
-                android:id="@+id/pauseGame"
+                android:id="@+id/pauseButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/pauseButtonText"
-                android:onClick="pauseGame"
+                android:onClick="pauseResumeTimer"
                 >
         </Button>
         <Button
-                android:id="@+id/stopGame"
+                android:id="@+id/stopButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/stopGameText"

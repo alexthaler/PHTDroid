@@ -21,9 +21,9 @@ public final class R {
         public static final int countdownText=0x7f070000;
         public static final int numDrinks=0x7f070004;
         public static final int numDrinksText=0x7f070001;
-        public static final int pauseGame=0x7f070002;
+        public static final int pauseButton=0x7f070002;
         public static final int startButton=0x7f070006;
-        public static final int stopGame=0x7f070003;
+        public static final int stopButton=0x7f070003;
     }
     public static final class layout {
         public static final int game=0x7f030000;
@@ -36,6 +36,7 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f060000;
         public static final int chooseAlertSound=0x7f060004;
+        public static final int defaultNumberOfDrinks=0x7f06000c;
         public static final int defaultTimerValue=0x7f060007;
         public static final int drinksCompletedText=0x7f060009;
         public static final int header=0x7f060001;
@@ -43,6 +44,7 @@ public final class R {
         public static final int numDrinksLabel=0x7f060003;
         public static final int pauseButtonText=0x7f060006;
         public static final int resumeButtonText=0x7f06000a;
+        public static final int resumeGameButtonText=0x7f06000b;
         public static final int startGameButtonText=0x7f060005;
         public static final int stopGameText=0x7f060008;
     }

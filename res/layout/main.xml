@@ -31,7 +31,7 @@
                     android:id="@+id/numDrinks"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/numDrinksHint"
+                    android:text="@string/defaultNumberOfDrinks"
                     android:inputType="numberDecimal"
                     />
         </LinearLayout>
@@ -58,7 +58,7 @@
         <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="fill_parent"
-                        android:layout_height="50dip"
+                        android:layout_height="60dip"
                         android:paddingTop="15dip"
                         >
                     <Button
@@ -69,7 +69,7 @@
                             android:onClick="startGame"
                         >
                     </Button>
-            </LinearLayout>
+        </LinearLayout>
 
 </LinearLayout>
 

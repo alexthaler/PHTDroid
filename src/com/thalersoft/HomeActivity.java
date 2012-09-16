@@ -2,9 +2,11 @@ package com.thalersoft;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -38,6 +40,7 @@ public class HomeActivity extends Activity {
         intent.putExtra(ALERT_SOUND_REQUESTED, selectedSound);
 
         startActivity(intent);
+
     }
 
 }

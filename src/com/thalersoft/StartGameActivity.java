@@ -1,6 +1,7 @@
 package com.thalersoft;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -26,32 +27,51 @@ public class StartGameActivity extends Activity {
         numDrinksText = (TextView) findViewById(R.id.numDrinksText);
 
         Intent intent = getIntent();
-        int numDrinksRequested = intent.getIntExtra(HomeActivity.NUM_DRINKS_REQUESTED, 60);
-        String alertRequested = intent.getStringExtra(HomeActivity.ALERT_SOUND_REQUESTED);
 
-        numDrinksText.setText(generateDrinkRemainingText(numDrinksRequested, 0));
+        if(intent.getExtras() != null && intent.getExtras().containsKey(HomeActivity.ALERT_SOUND_REQUESTED) ||
+                intent.getExtras().containsKey(HomeActivity.NUM_DRINKS_REQUESTED)) {
+            int numDrinksRequested = intent.getIntExtra(HomeActivity.NUM_DRINKS_REQUESTED, 60);
+            String alertRequested = intent.getStringExtra(HomeActivity.ALERT_SOUND_REQUESTED);
 
-        game = new Game(System.currentTimeMillis(), 0L, false, false, 0, numDrinksRequested, alertRequested);
+            numDrinksText.setText(generateDrinkRemainingText(numDrinksRequested, 0));
+            game = new Game(System.currentTimeMillis(), 0L, false, false, 0, numDrinksRequested, alertRequested);
+            mHandler.postDelayed(syncTimer, updateIntervalMillis);
+        } else {
 
-        mHandler.postDelayed(syncTimer, updateIntervalMillis);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        mHandler.removeCallbacks(syncTimer);
     }
 
     private Runnable syncTimer = new Runnable() {
         public void run() {
-            long currentDelta = System.currentTimeMillis() - game.getStartMillis();
-            Integer displayValue = Math.round(currentDelta/1000)%60;
 
-            int numDrinksCompleted = (int) Math.floor((currentDelta/1000)/60);
+            long currentDelta = System.currentTimeMillis() - (game.getStartMillis() + game.getPausedMillis());
 
-            countDownText.setText(displayValue.toString());
-            numDrinksText.setText(generateDrinkRemainingText(game.getNumDrinksGoal(), numDrinksCompleted));
+            if (!game.isPaused()) {
+                Integer displayValue = Math.round(currentDelta / 1000) % 60;
 
-            if(numDrinksCompleted != game.getLastNumDrinksCompleted()) {
-                game.setLastNumDrinksCompleted(numDrinksCompleted);
-                playAlertSound(getResourceForAlertSound(game.getAlertSound()));
+                int numDrinksCompleted = (int) Math.floor((currentDelta / 1000) / 60);
+
+                countDownText.setText(displayValue.toString());
+                numDrinksText.setText(generateDrinkRemainingText(game.getNumDrinksGoal(), numDrinksCompleted));
+
+                if(numDrinksCompleted != game.getLastNumDrinksCompleted()) {
+                    game.setLastNumDrinksCompleted(numDrinksCompleted);
+                    playAlertSound(getResourceForAlertSound(game.getAlertSound()));
+                }
+            } else {
+                game.setPausedMillis(game.getPausedMillis() + 1000);
             }
 
-            mHandler.postDelayed(syncTimer, updateIntervalMillis);
+            if (!game.isStopped()) {
+                mHandler.postDelayed(syncTimer, updateIntervalMillis);
+            }
+
         }
     };
 
@@ -74,22 +94,24 @@ public class StartGameActivity extends Activity {
         StringBuilder sb = new StringBuilder();
         sb.append(numDrinksCurrent);
         sb.append(" of ");
-        sb.append(numDrinksGoal);
+        sb.append(numDrinksGoal + " ");
         sb.append(getString(R.string.drinksCompletedText));
         return sb.toString();
     }
 
-    public void pauseGame(View view) {
-        game.setPaused(true);
-        Button button = (Button) findViewById(R.id.pauseGame);
-        button.setText(getString(R.string.resumeButtonText));
+    public void pauseResumeTimer(View view) {
+        game.setPaused(!game.isPaused());
+        Button button = (Button) findViewById(R.id.pauseButton);
+        if(game.isPaused()) {
+            button.setText(getString(R.string.resumeButtonText));
+        } else {
+            button.setText(getString(R.string.pauseButtonText));
+        }
     }
 
     public void stopGame(View view) {
         mHandler.removeCallbacks(syncTimer);
-        Intent intent = new Intent(this, HomeActivity.class);
-        game = null;
-        startActivity(intent);
+        finish();
     }
 
 }

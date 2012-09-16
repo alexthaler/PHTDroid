@@ -5,6 +5,7 @@ public class Game {
     private long startMillis;
     private long pausedMillis;
 
+    private boolean stopped;
     private boolean paused;
     private boolean silent;
 
@@ -22,6 +23,7 @@ public class Game {
         this.lastNumDrinksCompleted = lastNumDrinksCompleted;
         this.numDrinksGoal = numDrinksGoal;
         this.alertSound = alertSound;
+        this.stopped = false;
     }
 
     public long getStartMillis() {
@@ -80,4 +82,11 @@ public class Game {
         this.alertSound = alertSound;
     }
 
+    public boolean isStopped() {
+        return stopped;
+    }
+
+    public void setStopped(boolean stopped) {
+        this.stopped = stopped;
+    }
 }
