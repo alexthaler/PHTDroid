@@ -1,46 +1,51 @@
 package com.thalersoft;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import roboguice.activity.RoboActivity;
+import roboguice.inject.InjectView;
 
-public class HomeActivity extends Activity {
-    /**
-     * Called when the activity is first created.
-     */
+public class HomeActivity extends RoboActivity {
 
-    public static final String NUM_DRINKS_REQUESTED = "com.thalersoft.NUMDRINKSREQUESTED";
-    public static final String ALERT_SOUND_REQUESTED = "com.thalersoft.ALERTSOUNDREQUESTED";
+    @InjectView(R.id.startButton)
+    private Button startButton;
+
+    @InjectView(R.id.alertSoundSpinner)
+    private Spinner alertSoundSpinner;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Spinner spinner = (Spinner) findViewById(R.id.alertSoundSpinner);
-        ArrayAdapter<CharSequence> adapter =
-                ArrayAdapter.createFromResource(this, R.array.alerts_array, android.R.layout.simple_spinner_item);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.alerts_array,
+                android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        alertSoundSpinner.setAdapter(adapter);
+
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startGame(view);
+            }
+        });
     }
 
     public void startGame(View view) {
         Intent intent = new Intent(this, StartGameActivity.class);
         EditText numDrinksInput = (EditText) findViewById(R.id.numDrinks);
         int numDrinksRequested = Integer.parseInt(numDrinksInput.getText().toString());
-        intent.putExtra(NUM_DRINKS_REQUESTED, numDrinksRequested);
+        intent.putExtra(Constants.EXTRA_DRINKS_REQUESTED, numDrinksRequested);
 
         Spinner spinner = (Spinner) findViewById(R.id.alertSoundSpinner);
         String selectedSound = spinner.getSelectedItem().toString();
-        intent.putExtra(ALERT_SOUND_REQUESTED, selectedSound);
+        intent.putExtra(Constants.EXTRA_ALERT_REQUESTED, selectedSound);
 
         startActivity(intent);
-
     }
-
 }
