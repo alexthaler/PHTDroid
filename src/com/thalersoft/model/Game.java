@@ -1,6 +1,9 @@
 package com.thalersoft.model;
 
-public class Game {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Game implements Parcelable{
 
     private long startMillis;
     private long pausedMillis;
@@ -14,6 +17,9 @@ public class Game {
 
     private String alertSound;
 
+    public Game() {
+    }
+
     public Game(long startMillis, long pausedMillis, boolean paused, boolean silent, int lastNumDrinksCompleted,
                 int numDrinksGoal, String alertSound) {
         this.startMillis = startMillis;
@@ -25,6 +31,30 @@ public class Game {
         this.alertSound = alertSound;
         this.stopped = false;
     }
+
+    public static final Creator<Game> CREATOR = new Creator<Game>() {
+
+        @Override
+        public Game createFromParcel(Parcel parcel) {
+            Game game = new Game();
+            game.setStartMillis(parcel.readLong());
+            game.setPausedMillis(parcel.readLong());
+            boolean[] values = new boolean[3];
+            parcel.readBooleanArray(values);
+            game.setStopped(values[0]);
+            game.setPaused(values[1]);
+            game.setSilent(values[2]);
+            game.setLastNumDrinksCompleted(parcel.readInt());
+            game.setNumDrinksGoal(parcel.readInt());
+            game.setAlertSound(parcel.readString());
+            return game;
+        }
+
+        @Override
+        public Game[] newArray(int i) {
+            throw new UnsupportedOperationException();
+        }
+    };
 
     public long getStartMillis() {
         return startMillis;
@@ -88,5 +118,24 @@ public class Game {
 
     public void setStopped(boolean stopped) {
         this.stopped = stopped;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeLong(startMillis);
+        parcel.writeLong(pausedMillis);
+        boolean[] arr = new boolean[3];
+        arr[0] = stopped;
+        arr[1] = paused;
+        arr[2] = silent;
+        parcel.writeBooleanArray(arr);
+        parcel.writeInt(lastNumDrinksCompleted);
+        parcel.writeInt(numDrinksGoal);
+        parcel.writeString(alertSound);
     }
 }

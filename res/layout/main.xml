@@ -9,7 +9,7 @@
                   android:layout_height="wrap_content"
                   android:text="@string/header"
                   android:gravity="center"
-                  android:textSize="30sp"/>
+                  android:textSize="35sp"/>
     </LinearLayout>
     <LinearLayout android:orientation="horizontal"
                   android:layout_width="match_parent"
