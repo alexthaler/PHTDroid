@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.thalersoft.model.Game;
 import roboguice.activity.RoboActivity;
@@ -23,6 +24,9 @@ public class StartGameActivity extends RoboActivity {
     @InjectView(R.id.numDrinksText)
     private TextView numDrinksText;
 
+    @InjectView(R.id.drinkProgressBar)
+    private ProgressBar drinkProgressBar;
+
     @InjectExtra(Constants.EXTRA_DRINKS_REQUESTED)
     private int numDrinksRequested = 60;
 
@@ -37,6 +41,7 @@ public class StartGameActivity extends RoboActivity {
 
         game = new Game(System.currentTimeMillis(), 0L, false, false, 0, numDrinksRequested, alertRequested);
         mHandler.postDelayed(syncTimer, updateIntervalMillis);
+        drinkProgressBar.setMax(60);
     }
 
     @Override
@@ -52,6 +57,8 @@ public class StartGameActivity extends RoboActivity {
 
             if(!game.isPaused()) {
                 Integer displayValue = Math.round(currentDelta / 1000) % 60;
+
+                drinkProgressBar.setProgress(displayValue);
 
                 int numDrinksCompleted = (int) Math.floor((currentDelta / 1000) / 60);
 
