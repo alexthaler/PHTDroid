@@ -7,7 +7,7 @@
     <string name="chooseAlertSound">Alert Sound</string>
     <string name="startGameButtonText">Start Game</string>
     <string name="pauseButtonText">Pause</string>
-    <string name="defaultTimerValue">0</string>
+    <string name="defaultTimerValue">60</string>
     <string name="stopGameText">Stop!</string>
     <string name="drinksCompletedText">drinks completed.</string>
     <string name="resumeButtonText">Resume</string>

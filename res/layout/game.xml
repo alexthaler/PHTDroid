@@ -3,8 +3,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:orientation="vertical">
-
+              android:orientation="vertical"
+              android:weightSum="13">
     <LinearLayout
             android:layout_height="0dp"
             android:layout_width="match_parent"
@@ -16,14 +16,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/header"
                     android:gravity="center"
-                    android:textSize="30sp"
+                    android:textSize="35sp"
                     />
     </LinearLayout>
 
     <LinearLayout
             android:layout_height="0dp"
             android:layout_width="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="7"
             android:orientation="horizontal"
             >
             <TextView
@@ -31,7 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/defaultTimerValue"
-                    android:textSize="210sp"
+                    android:textSize="300sp"
                     android:gravity="center">
 
             </TextView>
@@ -41,7 +41,7 @@
     <LinearLayout
                 android:layout_height="0dp"
                 android:layout_width="match_parent"
-                android:layout_weight=".5"
+                android:layout_weight="1"
                 android:orientation="horizontal"
                 >
             <ProgressBar
@@ -77,24 +77,40 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:paddingLeft="100dip"
+            android:weightSum="9"
             >
+        <Space  android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_width="0dp">
+
+        </Space>
         <Button
                 android:id="@+id/pauseButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/pauseButtonText"
                 android:onClick="pauseResumeTimer"
+                android:layout_weight="3"
                 >
         </Button>
+        <Space  android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:layout_width="0dp">
+
+        </Space>
         <Button
                 android:id="@+id/stopButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/stopGameText"
                 android:onClick="stopGame"
+                android:layout_weight="3"
                 >
         </Button>
+        <Space  android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:layout_width="0dp">
+        </Space>
 
     </LinearLayout>
 
