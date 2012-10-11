@@ -40,7 +40,7 @@
 
     <LinearLayout
                 android:layout_height="0dp"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_weight=".5"
                 android:orientation="horizontal"
                 >
@@ -49,7 +49,9 @@
                  android:layout_height="wrap_content"
                  style="@android:style/Widget.ProgressBar.Horizontal"
                  android:id="@+id/drinkProgressBar"
-                 android:paddingLeft="55dp"
+                 android:layout_gravity="center"
+                 android:paddingLeft="60dp"
+                 android:paddingRight="60dp"
                  />
 
     </LinearLayout>
@@ -66,7 +68,6 @@
                     android:layout_height="wrap_content"
                     android:text="@string/drinksCompletedText"
                     android:gravity="center">
-
             </TextView>
 
         </LinearLayout>
