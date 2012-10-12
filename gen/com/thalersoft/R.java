@@ -13,18 +13,36 @@ public final class R {
     }
     public static final class attr {
     }
+    public static final class color {
+        public static final int aqua=0x7f060009;
+        public static final int black=0x7f06000f;
+        public static final int blue=0x7f06000d;
+        public static final int fuchsia=0x7f060002;
+        public static final int gray=0x7f060005;
+        public static final int green=0x7f06000c;
+        public static final int lime=0x7f06000a;
+        public static final int maroon=0x7f060008;
+        public static final int navy=0x7f06000e;
+        public static final int olive=0x7f060006;
+        public static final int purple=0x7f060007;
+        public static final int red=0x7f060003;
+        public static final int silver=0x7f060004;
+        public static final int teal=0x7f06000b;
+        public static final int white=0x7f060000;
+        public static final int yellow=0x7f060001;
+    }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int alertSoundSpinner=0x7f070006;
-        public static final int countdownText=0x7f070000;
-        public static final int drinkProgressBar=0x7f070001;
-        public static final int numDrinks=0x7f070005;
-        public static final int numDrinksText=0x7f070002;
-        public static final int pauseButton=0x7f070003;
-        public static final int startButton=0x7f070007;
-        public static final int stopButton=0x7f070004;
+        public static final int alertSoundSpinner=0x7f090006;
+        public static final int countdownText=0x7f090000;
+        public static final int drinkProgressBar=0x7f090001;
+        public static final int numDrinks=0x7f090005;
+        public static final int numDrinksText=0x7f090002;
+        public static final int pauseButton=0x7f090003;
+        public static final int startButton=0x7f090007;
+        public static final int stopButton=0x7f090004;
     }
     public static final class layout {
         public static final int game=0x7f030000;
@@ -35,18 +53,21 @@ public final class R {
         public static final int holydrink_alert=0x7f040001;
     }
     public static final class string {
-        public static final int app_name=0x7f060000;
-        public static final int chooseAlertSound=0x7f060004;
-        public static final int defaultNumberOfDrinks=0x7f06000c;
-        public static final int defaultTimerValue=0x7f060007;
-        public static final int drinksCompletedText=0x7f060009;
-        public static final int header=0x7f060001;
-        public static final int numDrinksHint=0x7f060002;
-        public static final int numDrinksLabel=0x7f060003;
-        public static final int pauseButtonText=0x7f060006;
-        public static final int resumeButtonText=0x7f06000a;
-        public static final int resumeGameButtonText=0x7f06000b;
-        public static final int startGameButtonText=0x7f060005;
-        public static final int stopGameText=0x7f060008;
+        public static final int app_name=0x7f070000;
+        public static final int chooseAlertSound=0x7f070004;
+        public static final int defaultNumberOfDrinks=0x7f07000c;
+        public static final int defaultTimerValue=0x7f070007;
+        public static final int drinksCompletedText=0x7f070009;
+        public static final int header=0x7f070001;
+        public static final int numDrinksHint=0x7f070002;
+        public static final int numDrinksLabel=0x7f070003;
+        public static final int pauseButtonText=0x7f070006;
+        public static final int resumeButtonText=0x7f07000a;
+        public static final int resumeGameButtonText=0x7f07000b;
+        public static final int startGameButtonText=0x7f070005;
+        public static final int stopGameText=0x7f070008;
+    }
+    public static final class style {
+        public static final int gameDisplayText=0x7f080000;
     }
 }

@@ -1,0 +1,8 @@
+<resources>
+    <style name="gameDisplayText">
+        <item name="android:textSize">300dp</item>
+        <item name="android:color">@color/white</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:gravity">center</item>
+    </style>
+</resources>

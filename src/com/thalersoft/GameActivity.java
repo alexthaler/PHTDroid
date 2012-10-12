@@ -12,7 +12,7 @@ import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectExtra;
 import roboguice.inject.InjectView;
 
-public class StartGameActivity extends RoboActivity {
+public class GameActivity extends RoboActivity {
 
     private static final long updateIntervalMillis = 1000L;
     private Handler mHandler = new Handler();
@@ -56,7 +56,7 @@ public class StartGameActivity extends RoboActivity {
             long currentDelta = System.currentTimeMillis() - (game.getStartMillis() + game.getPausedMillis());
 
             if(!game.isPaused()) {
-                Integer displayValue = Math.round(currentDelta / 1000) % 60;
+                Integer displayValue = (int) Math.ceil(currentDelta / 1000) % 60;
 
                 drinkProgressBar.setProgress(displayValue);
 

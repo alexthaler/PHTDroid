@@ -37,7 +37,7 @@ public class HomeActivity extends RoboActivity {
     }
 
     public void startGame(View view) {
-        Intent intent = new Intent(this, StartGameActivity.class);
+        Intent intent = new Intent(this, GameActivity.class);
         EditText numDrinksInput = (EditText) findViewById(R.id.numDrinks);
         int numDrinksRequested = Integer.parseInt(numDrinksInput.getText().toString());
         intent.putExtra(Constants.EXTRA_DRINKS_REQUESTED, numDrinksRequested);
