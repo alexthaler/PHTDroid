@@ -1,8 +1,11 @@
 package com.thalersoft;
 
+import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -56,7 +59,7 @@ public class GameActivity extends RoboActivity {
             long currentDelta = System.currentTimeMillis() - (game.getStartMillis() + game.getPausedMillis());
 
             if(!game.isPaused()) {
-                Integer displayValue = (int) Math.ceil(currentDelta / 1000) % 60;
+                Integer displayValue = 1 + Math.round(currentDelta / 1000) % 60;
 
                 drinkProgressBar.setProgress(displayValue);
 
@@ -68,6 +71,12 @@ public class GameActivity extends RoboActivity {
                 if(numDrinksCompleted != game.getLastNumDrinksCompleted()) {
                     game.setLastNumDrinksCompleted(numDrinksCompleted);
                     playAlertSound(getResourceForAlertSound(game.getAlertSound()));
+
+                    if(numDrinksCompleted == game.getNumDrinksGoal()) {
+                        game.setStopped(true);
+                        mHandler.removeCallbacks(syncTimer);
+                        finish();
+                    }
                 }
             } else {
                 game.setPausedMillis(game.getPausedMillis() + 1000);
@@ -91,8 +100,15 @@ public class GameActivity extends RoboActivity {
     }
 
     private void playAlertSound(int alertSoundResource) {
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, alertSoundResource);
-        mediaPlayer.start();
+        AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+        if(audioManager.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
+            MediaPlayer mediaPlayer = MediaPlayer.create(this, alertSoundResource);
+            mediaPlayer.start();
+        } else if (audioManager.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE) {
+            Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+            vibrator.vibrate(400);
+        }
+
     }
 
     private String generateDrinkRemainingText(int numDrinksGoal, int numDrinksCurrent) {
