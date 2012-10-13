@@ -3,7 +3,7 @@
     <string name="app_name">PHT</string>
     <string name="header">PowerHourTimer.com</string>
     <string name="numDrinksHint">60</string>
-    <string name="numDrinksLabel">Number of Drinks:</string>
+    <string name="numDrinksLabel">Number of Drinks</string>
     <string name="chooseAlertSound">Alert Sound</string>
     <string name="startGameButtonText">Start Game</string>
     <string name="pauseButtonText">Pause</string>

@@ -46,7 +46,7 @@ public final class R {
     }
     public static final class layout {
         public static final int game=0x7f030000;
-        public static final int home =0x7f030001;
+        public static final int home=0x7f030001;
     }
     public static final class raw {
         public static final int dumbdrink_alert=0x7f040000;

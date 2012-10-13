@@ -14,14 +14,11 @@
     <LinearLayout android:orientation="horizontal"
                   android:layout_width="match_parent"
                   android:layout_height="40dip">
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/numDrinksLabel"
-                  android:paddingRight="10dip"/>
         <EditText android:id="@+id/numDrinks"
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
-                  android:text="@string/defaultNumberOfDrinks"
+                  android:hint="@string/numDrinksLabel"
+                  android:textSize="25dp"
                   android:inputType="numberDecimal"/>
     </LinearLayout>
     <LinearLayout android:orientation="horizontal"
