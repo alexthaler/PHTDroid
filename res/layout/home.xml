@@ -1,47 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="50dip">
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:text="@string/header"
-                  android:gravity="center"
-                  android:textSize="35sp"/>
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#222222">
+
+    <include layout="@layout/header"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        style="@style/FormLayout">
+
+        <EditText
+            android:id="@+id/numDrinks"
+            android:hint="@string/numDrinksLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:inputType="numberDecimal" />
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <Button
+                android:id="@+id/powerHourHourButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Power Hour"/>
+            <Button
+                android:id="@+id/centuryHourButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="The Century"/>
+        </LinearLayout>
+
     </LinearLayout>
-    <LinearLayout android:orientation="horizontal"
-                  android:layout_width="match_parent"
-                  android:layout_height="40dip">
-        <EditText android:id="@+id/numDrinks"
-                  android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:hint="@string/numDrinksLabel"
-                  android:textSize="25dp"
-                  android:inputType="numberDecimal"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        style="@style/FormLayout">
+
+        <Spinner
+            android:id="@+id/alertSoundSpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25dp" />
     </LinearLayout>
-    <LinearLayout android:orientation="horizontal"
-                  android:layout_width="fill_parent"
-                  android:layout_height="50dip"
-                  android:paddingTop="15dip">
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/chooseAlertSound"
-                  android:paddingTop="7dip"
-                  android:paddingRight="10dip"/>
-        <Spinner android:id="@+id/alertSoundSpinner"
-                 android:layout_width="fill_parent"
-                 android:layout_height="35dip"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="65dp"
+            android:layout_marginRight="65dp"
+            android:text="@string/startGameButtonText" />
     </LinearLayout>
-    <LinearLayout android:orientation="horizontal"
-                  android:layout_width="fill_parent"
-                  android:layout_height="60dip"
-                  android:paddingTop="15dip">
-        <Button android:id="@+id/startButton"
-                android:layout_height="fill_parent"
-                android:layout_width="fill_parent"
-                android:text="@string/startGameButtonText"></Button>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="25dp">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="Disclaimer"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="10dp"
+            android:id="@+id/formBottomText"
+            android:text="@string/disclaimerText"/>
     </LinearLayout>
 
 </LinearLayout>

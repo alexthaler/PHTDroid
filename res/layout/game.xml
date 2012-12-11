@@ -1,117 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:orientation="vertical"
-              android:weightSum="13"
-              >
-    <LinearLayout
-            android:layout_height="0dp"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            >
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/header"
-                    android:gravity="center"
-                    android:textSize="35sp"
-                    />
-    </LinearLayout>
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#222222">
+
+    <include layout="@layout/header" />
 
     <LinearLayout
-            android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/countdownText"
             android:layout_width="match_parent"
-            android:layout_weight="7"
-            android:orientation="horizontal"
-            >
-            <TextView
-                    android:id="@+id/countdownText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/defaultTimerValue"
-                    style="@style/gameDisplayText"
-                    >
-            </TextView>
+            android:layout_height="wrap_content"
+            style="@style/gameDisplayText" />
 
     </LinearLayout>
 
     <LinearLayout
-                android:layout_height="0dp"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                >
-            <ProgressBar
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 style="@android:style/Widget.ProgressBar.Horizontal"
-                 android:id="@+id/drinkProgressBar"
-                 android:layout_gravity="center"
-                 android:paddingLeft="60dp"
-                 android:paddingRight="60dp"
-                 />
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:id="@+id/drinkProgressBar"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"/>
+
+        <TextView
+            android:id="@+id/numDrinksText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
 
     <LinearLayout
-            android:layout_height="0dp"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            >
-            <TextView
-                    android:id="@+id/numDrinksText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/drinksCompletedText"
-                    android:gravity="center">
-            </TextView>
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="25dp"
+        android:gravity="center_horizontal">
 
-        </LinearLayout>
-
-    <LinearLayout
-            android:layout_height="0dp"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="9"
-            >
-        <Space  android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:layout_width="0dp">
-
-        </Space>
         <Button
-                android:id="@+id/pauseButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/pauseButtonText"
-                android:onClick="pauseResumeTimer"
-                android:layout_weight="3"
-                >
-        </Button>
-        <Space  android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:layout_width="0dp">
+            android:id="@+id/pauseButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/pauseButtonText"
+            android:onClick="pauseResumeTimer" />
 
-        </Space>
         <Button
-                android:id="@+id/stopButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/stopGameText"
-                android:onClick="stopGame"
-                android:layout_weight="3"
-                >
-        </Button>
-        <Space  android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:layout_width="0dp">
-        </Space>
-
+            android:id="@+id/stopButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/stopGameText"
+            android:onClick="stopGame" />
     </LinearLayout>
 
 </LinearLayout>

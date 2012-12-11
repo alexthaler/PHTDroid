@@ -13,4 +13,9 @@
     <string name="resumeButtonText">Resume</string>
     <string name="resumeGameButtonText">Resume Game</string>
     <string name="defaultNumberOfDrinks">60</string>
+    <string name="PowerHour">PowerHour</string>
+    <string name="Timer">Timer</string>
+    <string name="disclaimerText">Rule #1 Don\'t be a moron! This game entails a LOT of drinking and should only be
+        played by people who know how to drink, aren\'t alone and won\'t be driving for a long time!
+    </string>
 </resources>
