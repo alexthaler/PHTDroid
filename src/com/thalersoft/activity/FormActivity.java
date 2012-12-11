@@ -1,4 +1,4 @@
-package com.thalersoft;
+package com.thalersoft.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import com.thalersoft.Constants;
+import com.thalersoft.R;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 

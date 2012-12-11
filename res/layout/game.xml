@@ -51,19 +51,17 @@
         android:gravity="center_horizontal">
 
         <Button
-            android:id="@+id/pauseButton"
+            android:id="@+id/pauseResumeButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="@string/pauseButtonText"
-            android:onClick="pauseResumeTimer" />
+            android:text="@string/pauseButtonText" />
 
         <Button
             android:id="@+id/stopButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="@string/stopGameText"
-            android:onClick="stopGame" />
+            android:text="@string/stopGameText" />
     </LinearLayout>
 
 </LinearLayout>

@@ -6,7 +6,7 @@
     <uses-sdk android:minSdkVersion="16"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
-        <activity android:name=".FormActivity"
+        <activity android:name=".activity.FormActivity"
                   android:label="@string/app_name"
                   android:theme="@android:style/Theme.Holo.NoActionBar"
                   android:screenOrientation="portrait">
@@ -15,7 +15,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".GameActivity"
+        <activity android:name=".activity.GameActivity"
                   android:label="@string/app_name"
                   android:theme="@android:style/Theme.Holo.NoActionBar"
                   android:screenOrientation="portrait">

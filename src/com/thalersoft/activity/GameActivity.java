@@ -1,4 +1,4 @@
-package com.thalersoft;
+package com.thalersoft.activity;
 
 import android.content.Intent;
 import android.media.AudioManager;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.thalersoft.Constants;
+import com.thalersoft.R;
 import com.thalersoft.model.Game;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectExtra;
@@ -20,6 +22,12 @@ public class GameActivity extends RoboActivity {
     private static final long updateIntervalMillis = 1000L;
     private Handler mHandler = new Handler();
     private Game game;
+
+    @InjectView(R.id.pauseResumeButton)
+    private Button pauseResumeButton;
+
+    @InjectView(R.id.stopButton)
+    private Button stopButton;
 
     @InjectView(R.id.countdownText)
     private TextView countDownText;
@@ -40,11 +48,19 @@ public class GameActivity extends RoboActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
 
-        numDrinksText.setText(generateDrinkRemainingText(numDrinksRequested, 0));
 
         game = new Game(System.currentTimeMillis(), 0L, false, false, 0, numDrinksRequested, alertRequested);
         mHandler.postDelayed(syncTimer, updateIntervalMillis);
+
+        bindViews();
+    }
+
+    private void bindViews() {
+        numDrinksText.setText(generateDrinkRemainingText(numDrinksRequested, 0));
         drinkProgressBar.setMax(60);
+
+        pauseResumeButton.setOnClickListener(new PauseResumeClickListener());
+        stopButton.setOnClickListener(new StopClickListener());
     }
 
     @Override
@@ -108,7 +124,6 @@ public class GameActivity extends RoboActivity {
             Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
             vibrator.vibrate(400);
         }
-
     }
 
     private String generateDrinkRemainingText(int numDrinksGoal, int numDrinksCurrent) {
@@ -120,18 +135,24 @@ public class GameActivity extends RoboActivity {
         return sb.toString();
     }
 
-    public void pauseResumeTimer(View view) {
-        game.setPaused(!game.isPaused());
-        Button button = (Button) findViewById(R.id.pauseButton);
-        if(game.isPaused()) {
-            button.setText(getString(R.string.resumeButtonText));
-        } else {
-            button.setText(getString(R.string.pauseButtonText));
+    private class PauseResumeClickListener implements View.OnClickListener {
+
+        @Override public void onClick(View v) {
+            game.setPaused(!game.isPaused());
+            if(game.isPaused()) {
+                pauseResumeButton.setText(getString(R.string.resumeButtonText));
+            } else {
+                pauseResumeButton.setText(getString(R.string.pauseButtonText));
+            }
         }
     }
 
-    public void stopGame(View view) {
-        mHandler.removeCallbacks(syncTimer);
-        finish();
+    private class StopClickListener implements View.OnClickListener {
+
+        @Override public void onClick(View v) {
+            mHandler.removeCallbacks(syncTimer);
+            finish();
+        }
     }
+
 }
